@@ -1,0 +1,12 @@
+*.apk
+*.ap_
+*.class
+bin/
+gen/
+local.properties
+.DS_Store
+.classpath
+.project
+.gradle
+build/
+obj/
