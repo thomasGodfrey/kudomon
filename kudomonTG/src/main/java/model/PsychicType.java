@@ -8,10 +8,11 @@ import java.util.HashMap;
  */
 public class PsychicType extends Kudomon{
 	
-	public PsychicType(ElementalType typeIn, String speciesIn, int xPosIn, int yPosIn, GameField fieldIn) {
-		super(typeIn, speciesIn, xPosIn, yPosIn, fieldIn);
+	public PsychicType(String speciesIn, int xPosIn, int yPosIn,double health_pointsIn, double combat_pointsIn, GameField fieldIn) {
+		super(speciesIn, xPosIn, yPosIn, health_pointsIn, combat_pointsIn, fieldIn);
 		
 		initialiseEffectivenessMultiplier();
+		type=ElementalType.PSYCHIC;
 	}
 	
 	private void initialiseEffectivenessMultiplier(){

@@ -7,7 +7,6 @@ import exceptions.KudomonCantBeCaughtException;
 /**
  * Trainer class to represent players of KudomonGO
  * Trainers have a {@link model.Position}, and an identifying name
- *
  */
 public class Trainer {
 	
@@ -19,9 +18,9 @@ public class Trainer {
 	
 	/**
 	 * Constructor for Trainer
-	 * @param nameIn
-	 * @param xPosIn
-	 * @param yPosIn
+	 * @param nameIn - Trainer Name
+	 * @param xPosIn - Trainer x coordinate
+	 * @param yPosIn - Trainer y coordinate
 	 * @param fieldIn - GameField on which the Trainer will spawn
 	 */
 	public Trainer(String nameIn, int xPosIn, int yPosIn, GameField fieldIn){
@@ -34,6 +33,7 @@ public class Trainer {
 	
 	/**
 	 * Search for nearby Kudomon. Exclude Kudomon already caught by the Trainer.
+	 * @return ArrayList of Kudomon - The list of nearby Kudomon
 	 */
 	public ArrayList<Kudomon> search(){
 		
@@ -75,8 +75,8 @@ public class Trainer {
 	/**
 	 * Start the capturing process of a Kudomon. 
 	 * Checks if the kudomon is in range, and if its not already being captured by another trainer
-	 * @param kudomonIn
-	 * @throws KudomonCantBeCaughtException
+	 * @param kudomonIn - The Kudomon the Trainer wants to catch
+	 * @throws KudomonCantBeCaughtException - {@link KudomonCantBeCaughtException}
 	 */
 	public void attemptCapture(Kudomon kudomonIn) throws KudomonCantBeCaughtException{
 		
@@ -101,19 +101,19 @@ public class Trainer {
 	/**
 	 * Completes the capturing process.
 	 * Add the currently capturing Kudomon to the list of caught Kudomon for this Trainer.
-	 * @param kudomonIn
 	 */
 	public void finishCapture(){
 		
 		gameField.removeKudomon(capturingKudomon);
 		capturingKudomon.setBeingCaughtBy(null);
 		caughtKudomon.add(capturingKudomon);
+		System.out.println(name+ " has caught " + capturingKudomon.getSpecies());
 		
 	}
 	
 	/**
 	 * Return a list of Kudomon caught by the Trainer
-	 * @return
+	 * @return ArrayList of Kudomon  - the list of Kudomon caught by the Trainer
 	 */
 	public ArrayList<Kudomon> getCaughtKudomon(){
 		return caughtKudomon;

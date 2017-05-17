@@ -11,8 +11,8 @@ public class Position {
 	
 	/**
 	 * Position Constructor. Initialise position as an x and y coordinate
-	 * @param xPosIn
-	 * @param yPosIn
+	 * @param xPosIn - x coordinate
+	 * @param yPosIn - y coordinate
 	 */
 	public Position(int xPosIn, int yPosIn){
 		
@@ -32,7 +32,7 @@ public class Position {
 
 	/**
 	 * Compares the calling objects Position, to a provided Position. 
-	 * @param otherPosition
+	 * @param otherPosition - Position of object to compare to
 	 * @return boolean - true if the Position is within 5 steps, otherwise false
 	 */
 	public boolean isNear(Position otherPosition) {
@@ -49,8 +49,8 @@ public class Position {
 	 * Checks if the provided objects position is within the GameField bounds
 	 * "Within bounds" means the position has a positive x and y coordinate
 	 * and that the coordinate values are less than the GameFields x and y range
-	 * @param xRange
-	 * @param yRange
+	 * @param xRange - Length of game Field
+	 * @param yRange - Width of game Field
 	 * @return boolean - true if object is within bounds, otherwise false
 	 */
 	public boolean isOutOfBounds(int xRange, int yRange) {

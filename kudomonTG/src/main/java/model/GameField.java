@@ -23,7 +23,7 @@ public class GameField {
 	/**
 	 * Add a Trainer to the GameField.
 	 * If the Trainer's Position is not within the GameField range, an IllegalArgumentException is thrown
-	 * @param TrainerIn
+	 * @param trainerIn - Trainer to add to Game Field
 	 */
 	public void addTrainer(Trainer trainerIn){
 		
@@ -39,7 +39,7 @@ public class GameField {
 	/**
 	 * Add a Kudomon to the GameField.
 	 * If the Kudomon's Position is not within the GameField range, an IllegalArgumentException is thrown
-	 * @param kudomonIn
+	 * @param kudomonIn - Kudomon to add to Game Field
 	 */
 	public void addKudomon(Kudomon kudomonIn) {
 		
@@ -53,7 +53,7 @@ public class GameField {
 	
 	/**
 	 * Return the list of Kudomon on the GameField
-	 * @return ArrayList<Kudomon>
+	 * @return ArrayList of Kudomon - List of Kudomon currently on the Game Field
 	 */
 	public ArrayList<Kudomon> getKudomon(){
 		return kudomon;
@@ -61,7 +61,7 @@ public class GameField {
 
 	/**
 	 * Method to remove the Kudomon from the gameField (Called after the Kudomon is captured)
-	 * @param kudomonIn
+	 * @param kudomonIn - The Kudomon to remove from the Game Field
 	 */
 	public void removeKudomon(Kudomon kudomonIn) {
 		kudomon.remove(kudomonIn);
