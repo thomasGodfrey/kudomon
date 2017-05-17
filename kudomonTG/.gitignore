@@ -1,0 +1,14 @@
+*.apk
+*.ap_
+*.class
+bin/
+gen/
+local.properties
+.DS_Store
+.classpath
+.project
+gradlew
+gradlew.bat
+.gradle
+build/
+obj/
