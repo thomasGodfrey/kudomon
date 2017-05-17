@@ -9,10 +9,16 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import exceptions.KudomonCantBeCaughtException;
+import model.ElectricType;
 import model.ElementalType;
+import model.FireType;
 import model.GameField;
+import model.GrassType;
 import model.Kudomon;
+import model.PsychicType;
+import model.RockType;
 import model.Trainer;
+import model.WaterType;
 
 public class CaptureTest {
 	
@@ -21,13 +27,13 @@ public class CaptureTest {
 	Trainer testTrainer = new Trainer("Ash",50,50,testGameField);
 	
 	//Create some Kudomon and add them to the GameField
-	Kudomon elSquirt = new Kudomon(ElementalType.WATER,"elSquirt",0,100,testGameField);
-	Kudomon ercatpie = new Kudomon(ElementalType.GRASS,"ercatpie",40,45,testGameField);
-	Kudomon narcoCow = new Kudomon(ElementalType.WATER,"narcoCow",50,50,testGameField);
-	Kudomon dedenne = new Kudomon(ElementalType.ELECTRIC,"dedenne",55,33,testGameField);
-	Kudomon aggron = new Kudomon(ElementalType.ROCK,"aggron",50,51,testGameField);
-	Kudomon alakazam = new Kudomon(ElementalType.PSYCHIC,"alakazam",47,52,testGameField);
-	Kudomon arkanine = new Kudomon(ElementalType.FIRE,"arkanine",0,0,testGameField);
+	Kudomon elSquirt = new WaterType(ElementalType.WATER,"elSquirt",0,100,testGameField);
+	Kudomon ercatpie = new GrassType(ElementalType.GRASS,"ercatpie",40,45,testGameField);
+	Kudomon narcoCow = new WaterType(ElementalType.WATER,"narcoCow",50,50,testGameField);
+	Kudomon dedenne = new ElectricType(ElementalType.ELECTRIC,"dedenne",55,33,testGameField);
+	Kudomon aggron = new RockType(ElementalType.ROCK,"aggron",50,51,testGameField);
+	Kudomon alakazam = new PsychicType(ElementalType.PSYCHIC,"alakazam",47,52,testGameField);
+	Kudomon arkanine = new FireType(ElementalType.FIRE,"arkanine",0,0,testGameField);
 	
 	
 	@Rule

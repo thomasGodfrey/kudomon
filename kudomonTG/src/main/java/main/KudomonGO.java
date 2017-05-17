@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import exceptions.KudomonCantBeCaughtException;
+import model.ElectricType;
 import model.ElementalType;
+import model.FireType;
 import model.GameField;
+import model.GrassType;
 import model.Kudomon;
+import model.PsychicType;
+import model.RockType;
 import model.Trainer;
+import model.WaterType;
 
 public class KudomonGO {
 	
@@ -25,13 +31,13 @@ public class KudomonGO {
 		Trainer ash = new Trainer("ash",25,33,gameField);
 		
 		//Create some Kudomon and add them to the GameField
-		Kudomon squirtle = new Kudomon(ElementalType.WATER,"elSquirt",0,100,gameField);
-		Kudomon caterpie = new Kudomon(ElementalType.GRASS,"ercatpie",23,34,gameField);
-		Kudomon croconaw = new Kudomon(ElementalType.WATER,"narcoCow",22,35,gameField);
-		Kudomon dedenne = new Kudomon(ElementalType.ELECTRIC,"dedenne",20,37,gameField);
-		Kudomon aggron = new Kudomon(ElementalType.ROCK,"aggron",25,33,gameField);
-		Kudomon alakazam = new Kudomon(ElementalType.PSYCHIC,"alakazam",25,34,gameField);
-		Kudomon arkanine = new Kudomon(ElementalType.FIRE,"arkanine",55,45,gameField);
+		Kudomon squirtle = new WaterType(ElementalType.WATER,"elSquirt",0,100,gameField);
+		Kudomon caterpie = new GrassType(ElementalType.GRASS,"ercatpie",23,34,gameField);
+		Kudomon croconaw = new WaterType(ElementalType.WATER,"narcoCow",22,35,gameField);
+		Kudomon dedenne = new ElectricType(ElementalType.ELECTRIC,"dedenne",20,37,gameField);
+		Kudomon aggron = new RockType(ElementalType.ROCK,"aggron",25,33,gameField);
+		Kudomon alakazam = new PsychicType(ElementalType.PSYCHIC,"alakazam",25,34,gameField);
+		Kudomon arkanine = new FireType(ElementalType.FIRE,"arkanine",55,45,gameField);
 		
 		ash.attemptCapture(aggron);
 		ash.finishCapture();
@@ -40,6 +46,7 @@ public class KudomonGO {
 		ash.finishCapture();
 		
 		System.out.println(ash.getCaughtKudomon());
+		System.out.println(aggron.getEffectiveness(ElementalType.GRASS));
 		
 		
 		

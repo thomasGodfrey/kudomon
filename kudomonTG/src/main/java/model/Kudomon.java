@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Random;
+
 /**
  * Kudomon Class to represent the Kudomon species in the game.
  * Each Kudomon has a type, a species, and a {@link model.Position}
@@ -12,6 +15,11 @@ public class Kudomon {
 	private Position position;
 	private GameField field;
 	private Trainer catcher;
+	
+	private double health_points;
+	private double combat_points;
+	protected HashMap<ElementalType, Double> multiplier = new HashMap<ElementalType, Double>();
+	private Random myTurn;
 	
 	
 	/**
@@ -27,6 +35,8 @@ public class Kudomon {
 		species = speciesIn;
 		position = new Position(xPosIn,yPosIn);
 		field = fieldIn;
+		
+		myTurn = new Random();
 		field.addKudomon(this);
 	}
 	
@@ -68,6 +78,24 @@ public class Kudomon {
 	 */
 	public Trainer isBeingCaughtBy() {
 		return catcher;
+	}
+	
+	public double getEffectiveness(ElementalType typeIn){
+		
+		if(!multiplier.containsKey(typeIn)){
+			return 1.0;
+		}
+			return multiplier.get(typeIn);
+	}
+	
+	public void battle(Kudomon otherKudomon){
+		
+		boolean myTurnFirst = myTurn.nextBoolean();
+		
+		if(myTurnFirst){
+			
+		}
+		
 	}
 	
 }
