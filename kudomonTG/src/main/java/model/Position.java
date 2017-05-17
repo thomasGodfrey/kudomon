@@ -19,15 +19,6 @@ public class Position {
 		this.xPos = xPosIn;
 		this.yPos = yPosIn;
 	}
-	
-	
-	//Getters to return the x and y coordinates of the Kudomon/Trainer
-	public int getXPosition(){
-		return xPos;
-	}
-	public int getYPosition(){
-		return yPos;
-	}
 
 
 	/**

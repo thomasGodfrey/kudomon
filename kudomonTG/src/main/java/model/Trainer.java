@@ -55,24 +55,6 @@ public class Trainer {
 	}
 	
 	/**
-	 * The Trainers current Position on the GameField
-	 * @return Position 
-	 */
-	public Position getPosition() {
-		return position;
-	}
-	
-	/**
-	 * Print the current position of a Trainer
-	 */
-	@Override
-	public String toString(){
-		
-		return ("Trainer " +name+ " is currently at position: ("+ 
-				position.getXPosition() +","+ position.getYPosition() +")" );
-	}
-	
-	/**
 	 * Start the capturing process of a Kudomon. 
 	 * Checks if the kudomon is in range, and if its not already being captured by another trainer
 	 * @param kudomonIn - The Kudomon the Trainer wants to catch
@@ -117,6 +99,23 @@ public class Trainer {
 	 */
 	public ArrayList<Kudomon> getCaughtKudomon(){
 		return caughtKudomon;
+	}
+	
+	/**
+	 * The Trainers current Position on the GameField
+	 * @return Position 
+	 */
+	public Position getPosition() {
+		return position;
+	}
+	
+	/**
+	 * Print the current position of a Trainer
+	 */
+	@Override
+	public String toString(){
+		
+		return (name);
 	}
 	
 }

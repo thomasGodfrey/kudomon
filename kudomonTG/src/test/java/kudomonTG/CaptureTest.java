@@ -77,6 +77,27 @@ public class CaptureTest {
 		assertEquals(expectedCaughtKudomon,testTrainer.getCaughtKudomon());
 	}
 	
+	@Test
+	public void testCaptureSameKudomonTwice(){
+		
+		try {
+			testTrainer.attemptCapture(aggron);
+			testTrainer.finishCapture();
+			testTrainer.attemptCapture(aggron);
+			testTrainer.finishCapture();
+			
+		} catch (KudomonCantBeCaughtException e) {
+			
+			e.printStackTrace();
+		}
+		
+		ArrayList<Kudomon> expectedCaughtKudomon = new ArrayList<Kudomon>();
+		expectedCaughtKudomon.add(aggron);
+
+		//The Trainer should only have one copy of the aggron kudomon
+		assertEquals(expectedCaughtKudomon,testTrainer.getCaughtKudomon());
+	}
+	
 	
 	
 	

@@ -1,9 +1,7 @@
 package main;
 
-import java.util.ArrayList;
 import exceptions.KudomonCantBeCaughtException;
 import model.ElectricType;
-import model.ElementalType;
 import model.FireType;
 import model.GameField;
 import model.GrassType;
@@ -19,9 +17,6 @@ public class KudomonGO {
 	public static void main(String args[]) throws KudomonCantBeCaughtException{
 		
 		GameField gameField;
-		ArrayList<Trainer> trainers;
-		ArrayList<Kudomon> kudomon;
-		Trainer currentPlayer;
 		
 		gameField = new GameField(100,100);
 		

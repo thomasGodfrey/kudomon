@@ -16,8 +16,8 @@ public class Kudomon {
 	private GameField field;
 	private Trainer catcher;
 	
-	private double health_points;
-	private double combat_points;
+	private double healthPoints;
+	private double combatPoints;
 	protected HashMap<ElementalType, Double> multiplier = new HashMap<ElementalType, Double>();
 	private Random myTurn;
 	private boolean knockedOut;
@@ -28,13 +28,15 @@ public class Kudomon {
 	 * @param speciesIn - Species name
 	 * @param xPosIn - x coordinate
 	 * @param yPosIn - y coordinate
+	 * @param healthPointsIn - The Kudomon's default health points
+	 * @param combatPointsIn - The Kudomon's default combat points
 	 * @param fieldIn - The GameField on which the Kudomon will spawn
 	 */
-	public Kudomon(String speciesIn, int xPosIn, int yPosIn, double health_pointsIn, double combat_pointsIn, GameField fieldIn){
+	public Kudomon(String speciesIn, int xPosIn, int yPosIn, double healthPointsIn, double combatPointsIn, GameField fieldIn){
 		species = speciesIn;
 		position = new Position(xPosIn,yPosIn);
-		health_points = health_pointsIn;
-		combat_points= combat_pointsIn;
+		healthPoints = healthPointsIn;
+		combatPoints= combatPointsIn;
 		field = fieldIn;
 		
 		myTurn = new Random();
@@ -42,30 +44,11 @@ public class Kudomon {
 	}
 	
 	/**
-	 * Print the current position of a Kudomon if its on the gameField, or just the Kudomon species name otherwise
+	 * Set the status of the Kudomon, Which Trainer is the Kudomon being caught by
+	 * @param trainerIn - Specify that the Kudomon is being caught by this Trainer
 	 */
-	@Override
-	public String toString(){
-		
-		return (species);
-		
-
-	}
-	
-	public String getSpecies(){
-		return species;
-	}
-	
-	public Position getPosition() {
-		return position;
-	}
-	
-	public ElementalType getType(){
-		return type;
-	}
-	
-	public boolean isKnockedOut(){
-		return knockedOut;
+	public void setBeingCaughtBy(Trainer trainerIn){
+		catcher = trainerIn;
 	}
 	
 	/**
@@ -76,40 +59,6 @@ public class Kudomon {
 		return catcher;
 	}
 	
-	/**
-	 * Set the status of the Kudomon, Is the Kudomon currently being caught by a Trainer
-	 * @param trainerIn - Specify that the Kudomon is being caught by this Trainer
-	 */
-	public void setBeingCaughtBy(Trainer trainerIn){
-		catcher = trainerIn;
-	}
-
-	
-	/**
-	 * Reduce the Kudomon's health points by the specified amount
-	 * @param damageAmount - The amount to be deducted from the Kudomon's health points
-	 */
-	public void damage(double damageAmount){
-		
-		health_points-=damageAmount;
-		if(health_points<=0){
-			knockedOut = true;
-		}
-		System.out.println(species+ " has " +health_points + " health");
-	}
-	
-	/**
-	 * Return the effectiveness multiplier against the enemy Kudomon type
-	 * @param typeIn - Type of the  Kudomon 
-	 * @return double - The amount of damage the attacking Kudomon will apply to the opponent
-	 */
-	public double getEffectiveness(ElementalType typeIn){
-		
-		if(!multiplier.containsKey(typeIn)){
-			return 1.0;
-		}
-			return multiplier.get(typeIn);
-	}
 	
 	/**
 	 * Simulate a battle between 2 Kudomon. The Kudomon {@link strike} each other until one is knocked out
@@ -148,9 +97,60 @@ public class Kudomon {
 	 */
 	public void strike(Kudomon otherKudomon){
 		
-		System.out.println(species + " hits " + combat_points*getEffectiveness(otherKudomon.getType()) + " against " + otherKudomon.getSpecies());
-		otherKudomon.damage(combat_points*getEffectiveness(otherKudomon.getType()));
+		System.out.println(species + " hits " + combatPoints*getEffectiveness(otherKudomon.getType()) + " against " + otherKudomon.getSpecies());
+		otherKudomon.damage(combatPoints*getEffectiveness(otherKudomon.getType()));
 		
+	}
+	
+	/**
+	 * Reduce the Kudomon's health points by the specified amount
+	 * @param damageAmount - The amount to be deducted from the Kudomon's health points
+	 */
+	public void damage(double damageAmount){
+		
+		healthPoints-=damageAmount;
+		if(healthPoints<=0){
+			knockedOut = true;
+		}
+		System.out.println(species+ " has " +healthPoints + " health");
+	}
+	
+	/**
+	 * Return the effectiveness multiplier against the enemy Kudomon type
+	 * @param typeIn - Type of the  Kudomon 
+	 * @return double - The amount of damage the attacking Kudomon will apply to the opponent
+	 */
+	public double getEffectiveness(ElementalType typeIn){
+		
+		if(!multiplier.containsKey(typeIn)){
+			return 1.0;
+		}
+			return multiplier.get(typeIn);
+	}
+	
+	public String getSpecies(){
+		return species;
+	}
+	
+	public Position getPosition() {
+		return position;
+	}
+	
+	public ElementalType getType(){
+		return type;
+	}
+	
+	public boolean isKnockedOut(){
+		return knockedOut;
+	}
+	
+	/**
+	 * Print the Kudomon species name
+	 */
+	@Override
+	public String toString(){
+		
+		return (species);
 	}
 	
 }

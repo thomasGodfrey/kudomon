@@ -11,7 +11,7 @@ public class GameField {
 	private int xRange;
 	private int yRange;
 	ArrayList<Trainer> trainers = new ArrayList<Trainer>();
-	ArrayList<Kudomon> kudomon = new ArrayList<Kudomon>();
+	ArrayList<Kudomon> kudomons = new ArrayList<Kudomon>();
 	
 	
 	public GameField(int xRangeIn, int yRangeIn){
@@ -47,8 +47,17 @@ public class GameField {
 			throw new IllegalArgumentException("Kudomon position must be within the Field boundary");
 		}
 		else{
-			kudomon.add(kudomonIn);
+			kudomons.add(kudomonIn);
 		}
+	}
+	
+	/**
+	 * Method to remove the Kudomon from the gameField (Called after the Kudomon is captured)
+	 * @param kudomonIn - The Kudomon to remove from the Game Field
+	 */
+	public void removeKudomon(Kudomon kudomonIn) {
+		kudomons.remove(kudomonIn);
+		
 	}
 	
 	/**
@@ -56,16 +65,9 @@ public class GameField {
 	 * @return ArrayList of Kudomon - List of Kudomon currently on the Game Field
 	 */
 	public ArrayList<Kudomon> getKudomon(){
-		return kudomon;
+		return kudomons;
 	}
 
-	/**
-	 * Method to remove the Kudomon from the gameField (Called after the Kudomon is captured)
-	 * @param kudomonIn - The Kudomon to remove from the Game Field
-	 */
-	public void removeKudomon(Kudomon kudomonIn) {
-		kudomon.remove(kudomonIn);
-		
-	}
+	
 
 }

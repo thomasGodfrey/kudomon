@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashMap;
-
 /**
  * Represents a Fire Type Kudomon.
  * Provides the appropriate effectiveness multiplier
@@ -17,7 +15,7 @@ public class FireType extends Kudomon{
 	
 	private void initialiseEffectivenessMultiplier(){
 		
-		multiplier.put(ElementalType.ROCK,2.0);
+		multiplier.put(ElementalType.GRASS,2.0);
 		multiplier.put(ElementalType.WATER,0.5);
 	}
 

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashMap;
-
 /**
  * Represents a Water Type Kudomon.
  * Provides the appropriate effectiveness multiplier
