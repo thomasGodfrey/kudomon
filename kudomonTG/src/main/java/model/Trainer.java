@@ -14,8 +14,8 @@ public class Trainer {
 	private String name;
 	private Position position;
 	private GameField gameField;
-	ArrayList<Kudomon> nearbyKudomon;
 	ArrayList<Kudomon> caughtKudomon = new ArrayList<Kudomon>();
+	Kudomon capturingKudomon;
 	
 	/**
 	 * Constructor for Trainer
@@ -35,7 +35,7 @@ public class Trainer {
 	/**
 	 * Search for nearby Kudomon. Exclude Kudomon already caught by the Trainer.
 	 */
-	private void search(){
+	public ArrayList<Kudomon> search(){
 		
 		ArrayList<Kudomon> searchedKudomon = new ArrayList<Kudomon>();
 		ArrayList<Kudomon> gameFieldKudomon = gameField.getKudomon(); 
@@ -51,7 +51,7 @@ public class Trainer {
 		
 		//Remove Kudomon that are already caught by the Trainer
 		searchedKudomon.removeAll(caughtKudomon);
-		nearbyKudomon = searchedKudomon;
+		return searchedKudomon;
 	}
 	
 	/**
@@ -73,17 +73,42 @@ public class Trainer {
 	}
 	
 	/**
-	 * Add a Kudomon to the list of caught Kudomon for this Trainer
+	 * Start the capturing process of a Kudomon. 
+	 * Checks if the kudomon is in range, and if its not already being captured by another trainer
+	 * @param kudomonIn
+	 * @throws KudomonCantBeCaughtException
+	 */
+	public void attemptCapture(Kudomon kudomonIn) throws KudomonCantBeCaughtException{
+		
+		//Call Search to retrieve the nearby Kudomon
+		ArrayList<Kudomon> nearbyKudomon = search();
+		
+		//If the Kudomon is not nearby, throw an error
+		if(!nearbyKudomon.contains(kudomonIn)){
+			throw new KudomonCantBeCaughtException(kudomonIn.getSpecies() + " is not nearby!");
+		
+		//If the Kudomon is not being caught, then start capture
+		}else if(kudomonIn.isBeingCaughtBy()==null){
+			kudomonIn.setBeingCaughtBy(this);
+			capturingKudomon = kudomonIn;
+		
+		//Otherwise another Trainer has already caught the kudomon, throw an error
+		}else{
+			throw new KudomonCantBeCaughtException(kudomonIn.getSpecies() +" has been stolen from you!");
+		}
+	}
+	
+	/**
+	 * Completes the capturing process.
+	 * Add the currently capturing Kudomon to the list of caught Kudomon for this Trainer.
 	 * @param kudomonIn
 	 */
-	public void catchKudomon(Kudomon kudomonIn) throws KudomonCantBeCaughtException{
+	public void finishCapture(){
 		
-		search();
-		if(nearbyKudomon.contains(kudomonIn)){
-			caughtKudomon.add(kudomonIn);
-		}else{
-			throw new KudomonCantBeCaughtException(kudomonIn.getSpecies()+" cant be caught!");
-		}
+		gameField.removeKudomon(capturingKudomon);
+		capturingKudomon.setBeingCaughtBy(null);
+		caughtKudomon.add(capturingKudomon);
+		
 	}
 	
 	/**

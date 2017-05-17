@@ -11,6 +11,7 @@ public class Kudomon {
 	private String species;
 	private Position position;
 	private GameField field;
+	private Trainer catcher;
 	
 	
 	/**
@@ -19,7 +20,7 @@ public class Kudomon {
 	 * @param speciesIn
 	 * @param xPosIn
 	 * @param yPosIn
-	 * ------------------INCL Field
+	 * @param fieldIn - The GameField on which the Kudomon will spawn
 	 */
 	public Kudomon(ElementalType typeIn, String speciesIn, int xPosIn, int yPosIn, GameField fieldIn){
 		type =  typeIn;
@@ -30,12 +31,17 @@ public class Kudomon {
 	}
 	
 	/**
-	 * Print the current position of a Kudomon
+	 * Print the current position of a Kudomon if its on the gameField, or just the Kudomon species name otherwise
 	 */
 	@Override
 	public String toString(){
-			
-		return ("Kudomon " +species+ " is currently at position: ("+ position.getXPosition() +","+ position.getYPosition() +")" );
+		
+		if(field.getKudomon().contains(this)){
+			return ("Kudomon " +species+ " is currently at position: ("+ position.getXPosition() +","+ position.getYPosition() +")" );
+		}
+		else{
+			return (species);
+		}
 
 	}
 	
@@ -46,6 +52,22 @@ public class Kudomon {
 	public Position getPosition() {
 		
 		return position;
+	}
+	
+	/**
+	 * Set the status of the Kudomon, Is the Kudomon currently being caught by a Trainer
+	 * @param beingCaughtIn
+	 */
+	public void setBeingCaughtBy(Trainer trainerIn){
+		catcher = trainerIn;
+	}
+
+	/**
+	 * Return who the Kudomon is currently being caught by
+	 * @return
+	 */
+	public Trainer isBeingCaughtBy() {
+		return catcher;
 	}
 	
 }

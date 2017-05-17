@@ -59,4 +59,13 @@ public class GameField {
 		return kudomon;
 	}
 
+	/**
+	 * Method to remove the Kudomon from the gameField (Called after the Kudomon is captured)
+	 * @param kudomonIn
+	 */
+	public void removeKudomon(Kudomon kudomonIn) {
+		kudomon.remove(kudomonIn);
+		
+	}
+
 }

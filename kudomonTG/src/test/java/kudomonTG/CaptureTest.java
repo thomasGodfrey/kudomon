@@ -37,15 +37,17 @@ public class CaptureTest {
 	public void shouldTestExceptionMessage() throws KudomonCantBeCaughtException {
 	 
 	    thrown.expect(KudomonCantBeCaughtException.class);
-	    thrown.expectMessage("elSquirt cant be caught!");
-	    testTrainer.catchKudomon(elSquirt);
+	    thrown.expectMessage("elSquirt is not nearby!");
+	    testTrainer.attemptCapture(elSquirt);
+	    testTrainer.finishCapture();
 	}
 	
 	@Test
 	public void testSuccesfulCapture(){
 		
 		try {
-			testTrainer.catchKudomon(aggron);
+			testTrainer.attemptCapture(aggron);
+			testTrainer.finishCapture();
 		} catch (KudomonCantBeCaughtException e) {
 			
 			e.printStackTrace();
@@ -61,8 +63,10 @@ public class CaptureTest {
 	public void testMultipleCapture(){
 		
 		try {
-			testTrainer.catchKudomon(aggron);
-			testTrainer.catchKudomon(narcoCow);
+			testTrainer.attemptCapture(aggron);
+			testTrainer.finishCapture();
+			testTrainer.attemptCapture(narcoCow);
+			testTrainer.finishCapture();
 			
 		} catch (KudomonCantBeCaughtException e) {
 			

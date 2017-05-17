@@ -33,7 +33,11 @@ public class KudomonGO {
 		Kudomon alakazam = new Kudomon(ElementalType.PSYCHIC,"alakazam",25,34,gameField);
 		Kudomon arkanine = new Kudomon(ElementalType.FIRE,"arkanine",55,45,gameField);
 		
-		ash.catchKudomon(aggron);
+		ash.attemptCapture(aggron);
+		ash.finishCapture();
+		
+		ash.attemptCapture(alakazam);
+		ash.finishCapture();
 		
 		System.out.println(ash.getCaughtKudomon());
 		
